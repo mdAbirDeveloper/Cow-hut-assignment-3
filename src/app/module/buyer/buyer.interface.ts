@@ -1,4 +1,4 @@
-import mongoose, { Model } from "mongoose";
+import mongoose, { Date, Model } from "mongoose";
 
 export enum UserRole {
   Seller = "seller",
@@ -6,7 +6,6 @@ export enum UserRole {
 }
 
 export type IBuyer = {
-  _id: mongoose.Schema.Types.ObjectId;
   password: string;
   role: UserRole;
   name: {
@@ -17,8 +16,8 @@ export type IBuyer = {
   address: string;
   budget: number;
   income: number;
-  createdAt?: Date;
-  updatedAt?: Date;
+  // createdAt: Date | undefined;
+  // updatedAt: Date | undefined;
 };
 
 export type BuyerModel = Model<IBuyer>;

@@ -12,10 +12,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1", router);
 
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-  res.send("it't from cow hut");
-  next();
-});
+app.get(
+  "https://cow-hut-assignment-3-json.vercel.app/",
+  (req: Request, res: Response, next: NextFunction) => {
+    res.send("it's from cow hut");
+    next();
+  }
+);
 
 app.use(globalErrorHandler);
 

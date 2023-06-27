@@ -79,6 +79,11 @@
             "date": 1687842012092,
             "name": "E:\\level-2 course\\assignment-3\\Cow-Hut\\logs\\winston\\errors\\phu-2023-27-06-11-error.log",
             "hash": "16a15bce17eaa0c9206ec407fedcc6559fd9d3f25fc821b61b626351974ad858"
+        },
+        {
+            "date": 1687857660778,
+            "name": "E:\\level-2 course\\assignment-3\\Cow-Hut\\logs\\winston\\errors\\phu-2023-27-06-15-error.log",
+            "hash": "d0746114bd7335ee5f4bbb303bd72f0d8dc4753349bcc070ee4259c2757737fd"
         }
     ],
     "hashType": "sha256"

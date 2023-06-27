@@ -1,6 +1,6 @@
 import { Model } from "mongoose";
 
-export type IBuyer = {
+export type ISeller = {
   password: string;
   role: string;
   name: {
@@ -13,4 +13,4 @@ export type IBuyer = {
   income: number;
 };
 
-export type BuyerModel = Model<IBuyer>;
+export type SellerMode = Model<ISeller>;

@@ -1,10 +1,10 @@
 import mongoose, { Schema } from "mongoose";
-import { IBuyer } from "./buyer.interface";
+import { ISeller } from "./seller.interface";
+import { sellerRole } from "./seller.constant";
 import ApiError from "../../../errors/ApiError";
 import httpStatus from "http-status";
-import { buyerRole } from "./buyer.constant";
 
-const BuyerSchema: Schema<IBuyer> = new Schema<IBuyer>(
+const sellerSchema = new Schema<ISeller>(
   {
     password: {
       type: String,
@@ -12,7 +12,7 @@ const BuyerSchema: Schema<IBuyer> = new Schema<IBuyer>(
     },
     role: {
       type: String,
-      enum: buyerRole,
+      enum: sellerRole,
       required: true,
     },
     name: {
@@ -50,17 +50,15 @@ const BuyerSchema: Schema<IBuyer> = new Schema<IBuyer>(
   }
 );
 
-BuyerSchema.pre("save", async function (next) {
-  const isExist = await Buyer.findOne({
-    // name: this.name,
-    role: this.role,
+sellerSchema.pre("save", async function (next) {
+  const isExist = await Seller.findOne({
     phoneNumber: this.phoneNumber,
-    password: this.password,
+    name: this.name,
   });
   if (isExist) {
-    throw new ApiError(httpStatus.CONFLICT, "this buyer is already exist !");
+    throw new ApiError(httpStatus.CONFLICT, "this seller is already exist !");
   }
   next();
 });
 
-export const Buyer = mongoose.model<IBuyer>("Buyer", BuyerSchema);
+export const Seller = mongoose.model<ISeller>("seller", sellerSchema);

@@ -1,18 +1,22 @@
 import express from "express";
-// import { UserRoutes } from "../modules/user/user.route";
-// import { AcademicSemestreRoutes } from "../modules/academicSemester/academicSemester.route";
-// import { AcademicFacultyRoutes } from "../modules/academicFaculty/academicFaculty.route";
-// import { AcademicDepartmentRoutes } from "../modules/academicDepartment/academicDepartment.routes";
-// import { StudentRoutes } from "../modules/student/student.route";
-import { BuyerService } from "../app/module/buyer/buyer.service";
 import { BuyerRoutes } from "../app/module/buyer/buyer.route";
+import { SellerRoute } from "../app/module/seller/seller.route";
+import { CowRoutes } from "../app/module/cow/cow.route";
 
 const router = express.Router();
 
 const moduleRoutes = [
   {
-    path: "/auth",
+    path: "/buyer",
     route: BuyerRoutes.router,
+  },
+  {
+    path: "/seller",
+    route: SellerRoute.router,
+  },
+  {
+    path: "/cow",
+    route: CowRoutes.router,
   },
 ];
 

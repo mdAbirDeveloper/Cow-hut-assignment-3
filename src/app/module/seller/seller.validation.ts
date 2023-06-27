@@ -1,8 +1,8 @@
 import { z } from "zod";
 
-const buyerSchema = z.object({
+const sellerSchema = z.object({
   password: z.string(),
-  role: z.enum(["buyer"]),
+  role: z.enum(["seller"]),
   name: z.object({
     firstName: z.string(),
     lastName: z.string(),
@@ -13,6 +13,4 @@ const buyerSchema = z.object({
   income: z.number(),
 });
 
-export const BuyerZodValidationSchema = {
-  buyerSchema,
-};
+export const SellerValidationZodSchema = { sellerSchema };

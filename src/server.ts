@@ -6,7 +6,7 @@ import { Server } from "http";
 import { errorlogger, logger } from "./shard/logger";
 
 process.on("uncaughtException", (error) => {
-  errorlogger.error(error);
+  console.log(error);
   process.exit(1);
 });
 
@@ -14,19 +14,19 @@ let server: Server;
 async function bootstrap() {
   try {
     await mongoose.connect(config.database_url as string);
-    logger.info("data base is connected successfully");
+    console.log("data base is connected successfully");
 
     server = app.listen(port, () => {
-      logger.info(`Application listening on port ${port}`);
+      console.log(`Application listening on port ${port}`);
     });
   } catch (error) {
-    errorlogger.error("faild to connect database", error);
+    console.log("faild to connect database", error);
   }
 
   process.on("unhandledRejection", (error) => {
     if (server) {
       server.close(() => {
-        errorlogger.error(error);
+        console.log(error);
         process.exit(1);
       });
     } else {
@@ -38,7 +38,7 @@ async function bootstrap() {
 bootstrap();
 
 process.on("SIGTERM", () => {
-  logger.info("sigterm is received");
+  console.log("sigterm is received");
   if (server) {
     server.close();
   }
